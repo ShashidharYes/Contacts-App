@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".uping"
+    android:background="#600DAE1D"
+
+    android:orientation="vertical"
+    android:layout_margin="30dp">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" New contact"
+        android:textSize="30dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/namefill"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="7dp"
+        android:background="@color/white"
+
+        android:inputType="textPersonName"
+        android:layout_marginBottom="20dp"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/numfill"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="7dp"
+
+        android:background="@color/white"
+        android:inputType="phone"
+        android:hint="Phone number"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_marginLeft="190dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+
+
+
+</LinearLayout>

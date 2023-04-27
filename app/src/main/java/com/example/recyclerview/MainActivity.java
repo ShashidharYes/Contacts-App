@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+   FloatingActionButton Flo ;
+   Button btn;
 ArrayList<card> arr = new ArrayList<>();
 
     @Override
@@ -37,8 +44,28 @@ ArrayList<card> arr = new ArrayList<>();
         arr.add(new card(R.drawable.ic_launcher_foreground,"rothal","1243"));
         arr.add(new card(R.drawable.ic_launcher_foreground,"rothal","1243"));
 
+
+
+        Flo = findViewById(R.id.floating);
+
+        Flo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent  tis = new Intent(MainActivity.this,uping.class);
+                startActivity(tis);
+            }
+
+
+
+        });
+        Intent second = getIntent();
+        arr.add(new card(R.drawable.ic_launcher_foreground,second.getStringExtra("name"),second.getStringExtra("Phone")));
+
         Adapter adapter = new Adapter(this, arr);
+
         recycler.setAdapter(adapter);
+
+
 
 
     }
