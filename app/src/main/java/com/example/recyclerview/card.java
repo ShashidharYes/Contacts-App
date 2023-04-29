@@ -9,5 +9,10 @@ public class card {
         this.name = name;
         this.contact = contact;
     }
+    card(String name,String contact){
+
+        this.name = name;
+        this.contact = contact;
+    }
 
 }

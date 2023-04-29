@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -16,7 +19,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
    FloatingActionButton Flo ;
    Button btn;
-ArrayList<card> arr = new ArrayList<>();
+    Adapter adapter;
+
+    ArrayList<card> arr = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,47 @@ ArrayList<card> arr = new ArrayList<>();
 
         RecyclerView recycler = findViewById(R.id.recycle);
         recycler.setLayoutManager(new LinearLayoutManager(this));
+        Flo = findViewById(R.id.floating);
+
+        Flo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.activity_uping);
+
+                EditText edtName = dialog.findViewById(R.id.namefill);
+                EditText edtNum = dialog.findViewById(R.id.numfill);
+                Button btnSubmit = dialog.findViewById(R.id.submit);
+
+                btnSubmit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String name ="",num = "";
+                        if(!edtName.getText().toString().equals("")) {
+                            name = edtName.getText().toString();
+                            num = edtNum.getText().toString();
+                        }else {
+                            Toast.makeText(MainActivity.this,"Please Enter Contact Name",Toast.LENGTH_SHORT);
+                        }
+                        if(!edtNum.getText().toString().equals("")) {
+                            num = edtNum.getText().toString();
+                        }else {
+                            Toast.makeText(MainActivity.this,"Please Enter Contact Num",Toast.LENGTH_SHORT);
+                        }
+                        arr.add(new card(name,num));
+                        adapter.notifyItemInserted(arr.size()-1);
+                        recycler.scrollToPosition(arr.size()-1);
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+            }
+
+
+
+        });
 
         card obj = new card(R.drawable.ic_launcher_background,"Shashi","943");
         // instead we can  create a new object even within the add()
@@ -46,22 +92,10 @@ ArrayList<card> arr = new ArrayList<>();
 
 
 
-        Flo = findViewById(R.id.floating);
-
-        Flo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent  tis = new Intent(MainActivity.this,uping.class);
-                startActivity(tis);
-            }
 
 
 
-        });
-        Intent second = getIntent();
-        arr.add(new card(R.drawable.ic_launcher_foreground,second.getStringExtra("name"),second.getStringExtra("Phone")));
-
-        Adapter adapter = new Adapter(this, arr);
+        adapter = new Adapter(this, arr);
 
         recycler.setAdapter(adapter);
 
