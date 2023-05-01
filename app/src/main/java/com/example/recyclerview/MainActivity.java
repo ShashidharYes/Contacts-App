@@ -1,12 +1,18 @@
 package com.example.recyclerview;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,11 +26,17 @@ public class MainActivity extends AppCompatActivity {
    FloatingActionButton Flo ;
    Button btn;
     Adapter adapter;
-
+    Toolbar toolbar;
     ArrayList<card> arr = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -99,8 +111,47 @@ public class MainActivity extends AppCompatActivity {
 
         recycler.setAdapter(adapter);
 
+        //setting up of the toolbar
+        toolbar = findViewById(R.id.toolbsr);
+        //step 1;
+        setSupportActionBar(toolbar); //this is when we are using toolbar of appcompat
+        //setActionBar();  this is when we are using normal toolbar
+
+        //step 2
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);// this enables the back button to go to previous activity
 
 
+        }
 
+        toolbar.setTitle("My toolBar");
+        toolbar.setSubtitle("this is subtitle");
+
+        //for menu bar of three dots
+        //we have to create a menu baar first go to res folder ---> new resource file --> choose menu in that
+
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        new MenuInflater(this).inflate(R.menu.opt_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId  == R.id.opt_new){
+            Toast.makeText(this,"new file Creating",Toast.LENGTH_SHORT);
+        }else if(itemId == R.id.opt_save){
+            Toast.makeText(this,"Saving the file",Toast.LENGTH_SHORT);
+        }else if(itemId == R.id.opt_open){
+            Toast.makeText(this,"Opening file",Toast.LENGTH_SHORT);
+        } else if (itemId == android.R.id.home) {
+            super.onBackPressed(); // to move to previous activity here home represents back
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,7 +1,9 @@
 package com.example.recyclerview;
 
+import androidx.annotation.DrawableRes;
+
 public class card {
-    int img;
+    int img =R.drawable.ic_launcher_background ;
     String name,contact;
 
     card(int img,String name,String contact){
