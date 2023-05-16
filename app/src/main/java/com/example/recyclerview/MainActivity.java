@@ -84,23 +84,23 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        card obj = new card(R.drawable.ic_launcher_background,"Shashi","943");
+        card obj = new card(R.drawable.,"Shashi","943");
         // instead we can  create a new object even within the add()
         arr.add(obj);
-        arr.add(new card(R.drawable.ic_launcher_foreground,"Shashidhar","1234"));
-        arr.add(new card(R.drawable.ic_launcher_background,"jother","1234"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"pooran","1234"));
-        arr.add(new card(R.drawable.ic_launcher_background,"maxwell","1424"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"A","1243"));
-        arr.add(new card(R.drawable.ic_launcher_background,"B","1243"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"C","1243"));
-        arr.add(new card(R.drawable.ic_launcher_background,"D","43"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"E","243"));
-        arr.add(new card(R.drawable.ic_launcher_background,"F","14"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"rothal","143"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"rothal","123"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"rothal","1243"));
-        arr.add(new card(R.drawable.ic_launcher_foreground,"rothal","1243"));
+        arr.add(new card(R.drawable.profile,"Shashidhar","1234"));
+        arr.add(new card(R.drawable.profile,"jother","1234"));
+        arr.add(new card(R.drawable.profile,"pooran","1234"));
+        arr.add(new card(R.drawable.profile,"maxwell","1424"));
+        arr.add(new card(R.drawable.profile,"A","1243"));
+        arr.add(new card(R.drawable.profile,"B","1243"));
+        arr.add(new card(R.drawable.profile,"C","1243"));
+        arr.add(new card(R.drawable.profile,"D","43"));
+        arr.add(new card(R.drawable.profile,"E","243"));
+        arr.add(new card(R.drawable.profile,"F","14"));
+        arr.add(new card(R.drawable.profile,"rothal","143"));
+        arr.add(new card(R.drawable.profile,"rothal","123"));
+        arr.add(new card(R.drawable.profile,"rothal","1243"));
+        arr.add(new card(R.drawable.profile,"rothal","1243"));
 
 
 
@@ -144,14 +144,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         if(itemId  == R.id.opt_new){
-            Toast.makeText(this,"new file Creating",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"new file Creating",Toast.LENGTH_SHORT).show();
         }else if(itemId == R.id.opt_save){
-            Toast.makeText(this,"Saving the file",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Saving the file",Toast.LENGTH_SHORT).show();
+            //If we dont add show then it wont show anything
         }else if(itemId == R.id.opt_open){
-            Toast.makeText(this,"Opening file",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Opening file",Toast.LENGTH_SHORT).show();
         } else if (itemId == android.R.id.home) {
             super.onBackPressed(); // to move to previous activity here home represents back
         }
         return super.onOptionsItemSelected(item);
+
     }
 }

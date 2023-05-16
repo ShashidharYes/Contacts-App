@@ -129,7 +129,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             }
         });
 
-        setAnimation(holder.itemView,position);
+//        setAnimation(holder.itemView,position);
     }
 
     @Override
@@ -159,16 +159,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     // and for this animation to work only once scrolling
     //lets say
-    int lastPostion = -1;
-    private void setAnimation(View viewToAnimate ,int position){
-            if(position>lastPostion) {
-                Animation sideLn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
-                viewToAnimate.startAnimation(sideLn);
-                lastPostion = position;
-                // so once the lastPosition becomes arr.size() value next time when we scroll up or down
-                // this code wont work when we are scrolling again
-
-            }
-    }
+//    int lastPostion = -1;
+//    private void setAnimation(View viewToAnimate ,int position){
+//            if(position>lastPostion) {
+//                Animation sideLn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+//                viewToAnimate.startAnimation(sideLn);
+//                lastPostion = position;
+//                // so once the lastPosition becomes arr.size() value next time when we scroll up or down
+//                // this code wont work when we are scrolling again
+//
+//            }
+//    }
 
 }
